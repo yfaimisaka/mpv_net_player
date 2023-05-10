@@ -39,7 +39,7 @@ class MpvVedio():
         # if paly failed, then re-generate data_file
         # use cookie and check if type is 'playlist'
         # TODO: remove cookie hardcode(-c xxx), instead, as a parm
-        cmd_you_get = './you-get/you-get -u'
+        cmd_you_get = './you-get/you-get -u '
         if self.is_playlist:
             cmd_you_get += ' -l '
         if self.debug:
