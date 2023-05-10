@@ -58,10 +58,11 @@ class MpvVedio():
         # os.system(cmd_you_get)
         # print("++++++++++++++++++++++++++END++++++++++++++++++++++")
 
-        cmd_you_get += self.raw_url + ' > ' + self.data_file
-        print("[DEBUG]===========get-urls::", cmd_you_get, "==============")
+        cmd_you_get += "'" + self.raw_url + "'" + ' > ' + self.data_file
+        if self.debug:
+            print("[DEBUG]===========get-urls::", cmd_you_get, "==============")
         res = os.system(cmd_you_get)
-        if not res:
+        if res:
             raise Exception("[ERROR]: Fail to write vedio and audio url to file [%s]" % (self.data_file))
 
 
@@ -71,7 +72,8 @@ class MpvVedio():
         # mpv "{vedio_url}" --audio-file "{audio_url}" --referrer "{referrer}" --no-ytdl
         cmd = 'mpv ' + '"'
         cmd += vedio_url + '"' + ' --audio-file='+ '"' + audio_url + '"' + " --no-ytdl"
-        print("[DEBUG]==========cmd::", cmd, "===============")
+        if self.debug:
+            print("[DEBUG]==========cmd::", cmd, "===============")
         return cmd 
 
 
